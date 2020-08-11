@@ -5,7 +5,7 @@ In this lab you will learn how to use Amazon EMR notebook  and transform your da
 ### Validate S3 data sets
 
 1. Login to your AWS console using the instructions provided by the lab instructor
-2. Navigate to S3 --> glue-labs-001-<YourAccountNumber>-->Data
+2. Navigate to S3 --> glue-labs-001-YourAccountNumber-->Data
 3. Click on nyc_trips_csv and see if there are 10 csv files. Feel free to explore the files.
 4. Click on salesdb and see if there are 8 different folders such as customer, product, etc. Feel free to explore the files. You should see parquet files in each of the folders.
 
