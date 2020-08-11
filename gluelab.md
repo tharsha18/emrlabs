@@ -1,10 +1,6 @@
-# Data Preperation Using Glue Notebooks
+# Data Transformation Using Spark Sql and EMR Noteboo
 
-In this lab you will learn how to use AWS Glue with notebooks and prepare dataset for feature engineering, transformations and creating an orchestration workflow for the jobs to help you create a pipeline to handle day-to-day data changes.
-
-## Section 1: Pre-Requisite to create a Glue Catalog for data sets in S3
-
-This section assumes that the two data sets required for the lab are already loaded to S3. Use the steps below to validate the data set exists and complete this section.
+In this lab you will learn how to use Amazon EMR notebook  and transform your dataset using spark sql.
 
 ### Validate S3 data sets
 
@@ -15,40 +11,13 @@ This section assumes that the two data sets required for the lab are already loa
 
 If you do not see the files in steps 3, 4 above, speak to your lab instructor.
 
-### Create a Glue Catalog for the two datasets 
+## Section 1: Pre-Requisite to create a Glue Catalog for data sets in S3
 
-#### Data set 1 - Taxi Trip Data
+This section assumes that the two data sets required for the lab are already loaded to S3. Use the steps below to validate the data set exists and complete this section.
 
-1. Navigate to the AWS Glue console at Services -> AWS Glue
+### Create a Glue Catalog for the sales dataset 
 
-2. From the left-hand panel menu, navigate to Data Catalog -> Crawlers.
-
-3. Click on the button ‘Add Crawler’ to create a new AWS Glue Crawler.
-
-4. Fields to fill in:
-
-    Page: Add information about your crawler: 
-    Crawler name: nyc_trips_csv_crawler
-
-    Page: Add a data store: 
-    Choose a data store: S3
-
-    Include path: s3://glue-labs-001-ReplaceYourAcctID/data/nyc_trips_csv/
-
-    Page: Choose an IAM role: 
-    IAM Role: Choose an existing IAM role glue-labs-GlueServiceRole
-
-    Page: Configure the crawler's output: 
-    Database: Click on ‘Add database’ and enter database name as nyc_trips.
-
-5. Click on the button ‘Finish’ to create the crawler.
-
-6. Select the new Crawler and click on 'Run crawler' to run the Crawler.
-
-While the crawler is running, move on to the step below.
-    
-
-#### Data set 2 - Sales Data
+#### Data set - Sales Data
 
 1. Navigate to the AWS Glue console at Services -> AWS Glue
 
@@ -81,20 +50,21 @@ Now, verify whether both crawlers have run successfully and that you see 1 and 8
 ### You have successfully completed the Pre-Requisites! Move on to the next section. 
 
 
+## Section 2: Data Transformation using Amazon EMR  Notebook and Spark sql
 
+In this section, you will use the data sets crawled under section 1 to create a denormed product tavle and also convert the format from the source csv for one of the data sets and write in parquet format.
 
+## EMR notebook
 
+1. In your AWS Console, navigate to EMR --> Notebooks (Left hand pane)
+2. Click onm "Create Notebook" button to begin creating your notebook
+3. Enter name "demonb" for the name of the notebook and select the EMR cluster pre-created for you. If you DO NOT see an EMR cluster, speak to your lab administrator. Leave rest defaults as seen in screenshot below and create notebook.
 
-## Section 2: Data preperation and orchestration using AWS Glue Notebook
+![screenshot](img/pictureemr1.png)
 
-In this section, you will use the data sets crawled under section 1 to create a derived dataset that is denormed and also convert the format from the source csv for one of the data sets and write in parquet format.
-
-## Prepare Glue notebook
-
-1. In your AWS Console, navigate to AWS Glue --> Dev endpoints (Left hand pane under ETL) 
-2. You should see an endpoint named "glue-labs-Glue-Dev-Endpoint" already exisists for this lab
-3. Select the checkbox for the endpoint, click the drop down Action and select "Create SageMaker notebook"
-4. Type in any name for "Notebook name"
+4. Wait until the status column for the notebook instance turns to "Ready" state. Keep refreshing until you see it (Typically takes <2 min).
+5. Now, click "Open in Jupyter Lab".
+6. Select "pyspark" under section named Notebook
 5. Ensure "Create an IAM role" radio button is selected and give any name for the IAM role. Make a note of this IAM role name which will be used next.
 6. Leave rest default and click create
 7. Wait a few min and click refresh button at the top right corner of the page until you see the Status column turn to "Ready". Alternately, after waiting a few minutes, you can move on to step 8 below and see if the role name appears while you wait on status to turn to "Ready".
