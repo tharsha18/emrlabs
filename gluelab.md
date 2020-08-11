@@ -1,4 +1,4 @@
-# Data Transformation Using Spark Sql and EMR Noteboo
+# Data Transformation Using Spark Sql and EMR Notebook
 
 In this lab you will learn how to use Amazon EMR notebook  and transform your dataset using spark sql.
 
@@ -63,72 +63,13 @@ In this section, you will use the data sets crawled under section 1 to create a 
 ![screenshot](img/pictureemr1.png)
 
 4. Wait until the status column for the notebook instance turns to "Ready" state. Keep refreshing until you see it (Typically takes <2 min).
-5. Now, click "Open in Jupyter Lab".
-6. Select "pyspark" under section named Notebook
-5. Ensure "Create an IAM role" radio button is selected and give any name for the IAM role. Make a note of this IAM role name which will be used next.
-6. Leave rest default and click create
-7. Wait a few min and click refresh button at the top right corner of the page until you see the Status column turn to "Ready". Alternately, after waiting a few minutes, you can move on to step 8 below and see if the role name appears while you wait on status to turn to "Ready".
 
-It can take roughly between 5 to 10 min to get to ready state. Once ready, select the checbox and hit "open notebook". 
 
-8. This step is required to allow Sagemaker notebook to crate Glue jobs and workflows.
-
-Using your AWS Console, navigate to IAM --> Roles and search for the IAM role you created in step 5. It should start with AWSGlueServiceSageMakerNotebookRole-. 
-Click the role and add an inline policy as shown below. (We will create two inline policies)
-
-![screenshot](img/picture3.png)
-
-Click on the JSON tab and paste the text below. Click Review policy and give it any name in next screen and click create policy.
-
-#### Inline policy 1
-
-``` 
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "iam:PassRole",
-            "Resource": "*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": "glue.amazonaws.com"
-                }
-            }
-        }
-    ]
-} 
-```
-
-![screenshot](img/picture4.png)
-
-#### Inline Policy 2
-
-Add following to another inline policy and name it inlinepolicy2
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "glue:CreateJob",
-                "glue:CreateTrigger",
-                "glue:CreateWorkflow"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-### Now your env is all ready to run notebook code!
 
 ## Execute your notebook code for data preparation activity
 
 1. Download the ipynb file using the link provided here. 
-[Click this link](https://emp-cf-templates-us-west-2.s3.us-west-2.amazonaws.com/gluelab/glue-dataprep.ipynb)
+[Click this link](https://emp-cf-templates-us-west-2.s3.us-west-2.amazonaws.com/emrlab/EMR-sparksql-lab.ipynb)
 
 2. Once your jupyter notebook opens up, click on "open JupyterLab" at the top right of the page as seen in screenshot below.
 
@@ -139,11 +80,6 @@ Add following to another inline policy and name it inlinepolicy2
 ![screenshot](img/picture2.png)
 
 4. Follow the instructions on the notebook and complete the exercise. 
-5. Once you successfully completed the notebook steps, you will see a glue workflow as seen in screenshot below. Navigate in your AWS console to AWS Glue --> Workflow (Under ETL) --> click on the workflow you see. 
-
-Now, you can select it and click "run" under Actions drop down. This will run your notebook without you having to open the notebook going forward. Similarly, you can schedule this on a day to day basis for incremental data processing.
-
-![screenshot](img/Glue_Workflow.png)
 
 
 ## Congratulations!!! You have successfully completed this lab
