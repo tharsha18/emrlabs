@@ -45,7 +45,7 @@ This section assumes that the two data sets required for the lab are already loa
 
 6. Select the new Crawler and click on Run crawler to run the Crawler.
 
-Now, verify whether both crawlers have run successfully and that you see 1 and 8 respectively under column named "Tables added"
+Now, verify whether your crawler has run successfully and that you number 8 under column named "Tables added"
 
 ### You have successfully completed the Pre-Requisites! Move on to the next section. 
 
