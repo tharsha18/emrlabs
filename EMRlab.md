@@ -15,7 +15,7 @@ If you do not see the files in steps 3, 4 above, speak to your lab instructor.
 
 This section assumes that the two data sets required for the lab are already loaded to S3. Use the steps below to validate the data set exists and complete this section.
 
-### Create a Glue Catalog for the sales dataset 
+### a. Create a Glue Catalog for the sales dataset 
 
 #### Data set - Sales Data
 
@@ -47,6 +47,9 @@ This section assumes that the two data sets required for the lab are already loa
 
 Now, verify whether your crawler has run successfully and that you number 8 under column named "Tables added"
 
+### b. Create an EMR cluster selecting spark and Glue catalog checkbox for spark metastore
+
+
 ### You have successfully completed the Pre-Requisites! Move on to the next section. 
 
 
@@ -57,8 +60,8 @@ In this section, you will use the data sets crawled under section 1 to create a 
 ## EMR notebook
 
 1. In your AWS Console, navigate to EMR --> Notebooks (Left hand pane)
-2. Click onm "Create Notebook" button to begin creating your notebook
-3. Enter name "demonb" for the name of the notebook and select the EMR cluster pre-created for you. If you DO NOT see an EMR cluster, speak to your lab administrator. Leave rest defaults as seen in screenshot below and create notebook.
+2. Click on "Create Notebook" button to begin creating your notebook
+3. Enter name "demonb" for the name of the notebook, select from IAM role drop down to create a new role and select the EMR cluster pre-created for you in the next step. If you DO NOT see an EMR cluster, speak to your lab administrator. Leave rest defaults as seen in screenshot below and create notebook.
 
 ![screenshot](img/pictureemr1.png)
 
